@@ -31,13 +31,9 @@ if ($oldLogFiles.Length -ne 0) {
     Write-Host "Removed old log files"
 };
 
-# Copy the XML file
-Write-Host "Copying DisconnectAzureVPNConnecting.xml to C:\IT Files\scripts";
-Copy-Item ".\DisconnectAzureVPNConnection.xml" "C:\IT Files\scripts";
-
 # Register a new Scheduled Task using the XML
 Write-Host "Creating Scheduled Task";
-$xmlcontent = Get-Content -Path "C:\IT Files\scripts\DisconnectAzureVPNConnection.xml" -raw; 
+$xmlcontent = Get-Content -Path ".\DisconnectAzureVPNConnection.xml" -raw; 
 Register-ScheduledTask -xml $xmlcontent -TaskName "DisconnectAzureVPNConnection" -TaskPath "\";
 
 Stop-Transcript;
