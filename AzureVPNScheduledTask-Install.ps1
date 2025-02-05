@@ -37,7 +37,8 @@ Copy-Item ".\DisconnectAzureVPNConnection.xml" "C:\IT Files\scripts";
 
 # Register a new Scheduled Task using the XML
 Write-Host "Creating Scheduled Task";
-Register-ScheduledTask -xml (Get-Content "C:\IT Files\scripts\DisconnectAzureVPNConnection.xml" | Out-String) -TaskName "DisconnectAzureVPNConnection" -TaskPath "\";
+$xmlcontent = Get-Content -Path "C:\IT Files\scripts\DisconnectAzureVPNConnection.xml" -raw; 
+Register-ScheduledTask -xml $xmlcontent -TaskName "DisconnectAzureVPNConnection2" -TaskPath "\";
 
-Stop-Transcript
-Exit 
+Stop-Transcript;
+Exit; 
